@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A Example!</title>
+        <!-- <script type="text/javascript" src="./Class1.js"></script> -->
+        <style>
+            .main {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(233,45,34,0.3);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <h>
+                hello
+            </h>
+            <h1>
+                you
+            </h1>
+            <a href="https://www.baidu.com">百度一下</a>
+            <button onclick="invokeClass1()">函数类调用</button>
+        </div>
+        <script type="module">
+            import Class1 from './Class1.js'
+            let invokeClass1 = function() {
+                let a = new Class1(4);//new JJG.Class1(4);
+                a.log();
+                console.log(a.getValue());
+                let val = 45;
+                a.setValue(val);
+                a.log();
+            }
+        </script>
+        <script type="module">
+            /*
+                如果想要使用import语法，则需要将script类型设置为module模块
+                可解决错误（Uncaught SyntaxError: Cannot use import statement outside a module）
+            */
+            import defined from './public/defined.js'
+            import Class1_1 from './Class1_1.js'
+            if(defined(Class1_1))
+            {
+                console.log('a', Class1_1.a);
+                console.log('b', Class1_1.b);
+                console.log('c',Class1_1.c);
+                console.log('d',Class1_1.d.getValue())
+                Class1_1.d.setValue(78);
+                Class1_1.d.log();
+            }
+            alert(defined(window));
+        </script>
+        <!-- <script type="text/javascript" src="./public/Add.js">
+            console.log(Add(200,3));
+        </script> -->
+        <script type="module">
+            import Add from "./public/Add.js"
+            console.log(Add(200,3));
+        </script>
+    </body>
+</html>
