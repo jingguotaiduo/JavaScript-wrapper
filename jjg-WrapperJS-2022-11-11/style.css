@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+}
+
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: inherit;
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: 1px;
+  position: absolute;
+  margin: 0;
+  top: 40px;
+  right: 50px;
+
+  color: red;
+  text-shadow: 0 0 4px white;
+}
+canvas {
+  position: absolute;
+  top: 20%;
+  left: 3%;
+  width: 800px;
+  height: 600px;
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>js-jjg-2022-11-11</title>
+    <script src="./BibaoFunction.js"></script>
+    <script src="./BibaoFunction1.js"></script>
+    <script src="./BibaoFunction2.js"></script>
+    <!-- 
+       <link rel="stylesheet" href="./style.css">
+    -->
+    <style>
+		html, body {
+		  margin: 0;
+		}
+
+		html {
+		  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		  height: 100%;
+		}
+
+		body {
+		  overflow: hidden;
+		  height: inherit;
+		}
+
+		h1 {
+		  font-size: 40px;
+		  letter-spacing: 1px;
+		  position: absolute;
+		  margin: 0;
+		  top: 0px;
+		  left: 25%;
+		  color: red;
+		  height: 10%;
+		  text-shadow: 0 0 4px yellow;
+		}
+		canvas {
+		  position: absolute;
+		  top: 10%;
+		  left: 3%;
+		  width: 1080px;
+		  height: 800px;
+		}
+		#buttons {
+			//position:relative;
+			//float:left;
+			position:absolute;
+			top:300px;
+			right:100px;
+			width:300px;
+			height:500px;
+			background:gray;
+		}
+    </style>
+  </head>
+
+  <body>
+    <h1>JavaScript-wrapper-code-test-2022-11-11</h1>
+    <canvas id="canvas1"></canvas>
+	<div id="buttons">
+		<button id="invokeJJGPlus" type="text">调用模块invokeJJGPlus</button>
+		<button id="invokeJJGPlus1" type="text">调用模块invokeJJGPlus1</button>
+		<button id="invokeJJGPlus2" type="text">调用模块invokeJJGPlus2</button>
+		<button id="invokebibaoFunction" type="text">变量闭包调用</button>
+		<button id="invokebibaoFunction1" type="text">变量闭包调用1</button>
+		<button id="invokebibaoFunction2" type="text">变量闭包调用2</button>
+	</div>
+	<script type="module">
+		import JJGPlus from './JJGPlus.js';
+	    import JJGPlus1 from "./JJGPlus1.js";
+		import * as JJGPlus2 from './JJGPlus2.js';
+		document.getElementById('invokeJJGPlus').addEventListener('click',()=>{
+			startJJGPlus();
+		});
+		document.getElementById('invokeJJGPlus1').addEventListener('click',()=>{
+			startJJGPlus1();
+		});
+		document.getElementById('invokeJJGPlus2').addEventListener('click',()=>{
+			startJJGPlus2();
+		});
+		document.getElementById('invokebibaoFunction').addEventListener('click',()=>{
+			console.log(MathTool.d(3));
+			console.log(MathTool.d(0));
+			MathTool.e(5);
+			MathTool.e(20,30);
+		});
+		
+		document.getElementById('invokebibaoFunction1').addEventListener('click',()=>{
+			let bf1 = new BibaoFunction1(30,60);
+			bf1.print();
+			bf1.add(-15,-15);
+			bf1.print();
+			bf1.remove();
+			bf1.print();
+			bf1 = null;
+		});
+		document.getElementById('invokebibaoFunction2').addEventListener('click',()=>{
+			console.log(BibaoFunction2.unit);
+			BibaoFunction2.log();
+			console.log(BibaoFunction2.qiuhe([1,2,3,4,5]));
+			let bf2 = BibaoFunction2.subtract();
+			bf2(3,8);
+			bf2 = null;
+		});
+		
+		function startJJGPlus()
+		{
+			let a = new JJGPlus.jjgFunction(5);
+			a.log();
+			a.setValue(2);
+			console.log(a.getValue());
+
+			console.log(JJGPlus.Add(20,30));
+			console.log(JJGPlus.Jia(2,3));
+
+			console.log(JJGPlus.MF.divide(2, 3));
+			console.log(JJGPlus.MF.multiply(2, 3));
+			console.log(JJGPlus.MF.jc(5));
+
+			let snape = new JJGPlus.Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+			snape.greeting();
+			snape.farewell();
+			console.log(snape.age);
+			console.log(snape.subject);
+			snape.subject = "Balloon animals";
+			console.log(snape.subject);
+
+			let t = new JJGPlus.T1('Severus-T', 'Snape-T', 48, 'female', ['Potions-T'], 'Dark arts-T', 3);
+			t.greeting();
+			t.farewell();
+			console.log(t.age);
+			console.log(t.subject);
+
+			let leia = new JJGPlus.Person('Leia', 'Organa', 19, 'female' ['Government']);
+			leia.farewell();
+			console.log(leia.getName);
+
+			let p = new JJGPlus.P1('Leia-p', 'Organa-p', 29, 'male' ['Government-p']);
+			p.farewell();
+			console.log(p.getName);
+
+			let person1 = new JJGPlus.children('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+			person1.bio();
+			person1.greeting();
+			person1.farewell();
+		}
+	    function startJJGPlus1()
+	    {
+			let a = new JJGPlus1.jjgFunction(5);
+			a.log();
+			a.setValue(2);
+			console.log(a.getValue());
+
+			console.log(JJGPlus1.Add(20,30));
+			console.log(JJGPlus1.Jia(2,3));
+
+			console.log(JJGPlus1.MF.divide(2, 3));
+			console.log(JJGPlus1.MF.multiply(2, 3));
+			console.log(JJGPlus1.MF.jc(5));
+
+			let snape = new JJGPlus1.Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+			snape.greeting();
+			snape.farewell();
+			console.log(snape.age);
+			console.log(snape.subject);
+			snape.subject = "Balloon animals";
+			console.log(snape.subject);
+
+			let t = new JJGPlus1.T1('Severus-T', 'Snape-T', 48, 'female', ['Potions-T'], 'Dark arts-T', 3);
+			t.greeting();
+			t.farewell();
+			console.log(t.age);
+			console.log(t.subject);
+
+			let leia = new JJGPlus1.Person('Leia', 'Organa', 19, 'female' ['Government']);
+			leia.farewell();
+			console.log(leia.getName);
+
+			let p = new JJGPlus1.P1('Leia-p', 'Organa-p', 29, 'male' ['Government-p']);
+			p.farewell();
+			console.log(p.getName);
+
+			let person1 = new JJGPlus1.children('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+			person1.bio();
+			person1.greeting();
+			person1.farewell();
+	    }
+		function startJJGPlus2()
+		{
+			let a = new JJGPlus2.jjgFunction(5);
+			a.log();
+			a.setValue(2);
+			console.log(a.getValue());
+
+			console.log(JJGPlus2.Add(20,30));
+			console.log(JJGPlus2.Jia(2,3));
+
+			console.log(JJGPlus2.MF.divide(2, 3));
+			console.log(JJGPlus2.MF.multiply(2, 3));
+			console.log(JJGPlus2.MF.jc(5));
+
+			let snape = new JJGPlus2.Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+			snape.greeting();
+			snape.farewell();
+			console.log(snape.age);
+			console.log(snape.subject);
+			snape.subject = "Balloon animals";
+			console.log(snape.subject);
+
+			let t = new JJGPlus2.T1('Severus-T', 'Snape-T', 48, 'female', ['Potions-T'], 'Dark arts-T', 3);
+			t.greeting();
+			t.farewell();
+			console.log(t.age);
+			console.log(t.subject);
+
+			let leia = new JJGPlus2.Person('Leia', 'Organa', 19, 'female' ['Government']);
+			leia.farewell();
+			console.log(leia.getName);
+
+			let p = new JJGPlus2.P1('Leia-p', 'Organa-p', 29, 'male' ['Government-p']);
+			p.farewell();
+			console.log(p.getName);
+
+			let person1 = new JJGPlus2.children('Tammi', 'Smith', 17, 'female', ['music', 'skiing', 'kickboxing']);
+			person1.bio();
+			person1.greeting();
+			person1.farewell();
+		}
+		// set up canvas
+		const canvas = document.querySelector('canvas');
+		const ctx = canvas.getContext('2d');
+
+		const width = canvas.width = window.innerWidth;
+		const height = canvas.height = window.innerHeight;
+
+		// function to generate random number
+
+		function random(min, max) {
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		// function to generate random RGB color value
+
+		function randomRGB() {
+		  return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+		}
+
+		class Ball {
+
+		   constructor(x, y, velX, velY, color, size) {
+			  this.x = x;
+			  this.y = y;
+			  this.velX = velX;
+			  this.velY = velY;
+			  this.color = color;
+			  this.size = size;
+		   }
+
+		   draw() {
+			  ctx.beginPath();
+			  ctx.fillStyle = this.color;
+			  ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+			  ctx.fill();
+		   }
+
+		   update() {
+			  if ((this.x + this.size) >= width) {
+				 this.velX = -(Math.abs(this.velX));
+			  }
+
+			  if ((this.x - this.size) <= 0) {
+				 this.velX = Math.abs(this.velX);
+			  }
+
+			  if ((this.y + this.size) >= height) {
+				 this.velY = -(Math.abs(this.velY));
+			  }
+
+			  if ((this.y - this.size) <= 0) {
+				 this.velY = Math.abs(this.velY);
+			  }
+
+			  this.x += this.velX;
+			  this.y += this.velY;
+		   }
+
+		   collisionDetect() {
+			  for (const ball of balls) {
+				 if (!(this === ball)) {
+					const dx = this.x - ball.x;
+					const dy = this.y - ball.y;
+					const distance = Math.sqrt(dx * dx + dy * dy);
+
+					if (distance < this.size + ball.size) {
+					  ball.color = this.color = randomRGB();
+					}
+				 }
+			  }
+		   }
+
+		}
+
+		const balls = [];
+
+		while (balls.length < 100) {
+		   const size = random(10,20);
+		   const ball = new Ball(
+			  // ball position always drawn at least one ball width
+			  // away from the edge of the canvas, to avoid drawing errors
+			  random(0 + size,width - size),
+			  random(0 + size,height - size),
+			  random(-7,7),
+			  random(-7,7),
+			  randomRGB(),
+			  size
+		   );
+
+		  balls.push(ball);
+		}
+
+		function loop() {
+		   ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+		   ctx.fillRect(0, 0,  width, height);
+
+		   for (const ball of balls) {
+			 ball.draw();
+			 ball.update();
+			 ball.collisionDetect();
+		   }
+
+		   requestAnimationFrame(loop);
+		}
+
+		loop();
+    </script>
+  </body>
+</html>
